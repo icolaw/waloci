@@ -22,25 +22,28 @@
     </style>
 
 </head>
-<body class="bg-gradient-to-br from-gray-100 to-blue-100 h-screen ">
+<body class="bg-gray-100 h-screen ">
     <!-- กล่องใหญ่ที่เป็นกล่องสีขาวสำหรับเนื้อหาหลักของหน้า -->
     <div class="max-w-md mx-auto bg-white p-8 m-2 rounded-md shadow-md">
         <!-- ส่วนนี้แสดงข้อความต้อนรับและชื่อผู้ใช้ -->
         <div class="p-2"><span>👋🏻 สวัสดี </span>
             <input type="text" id="displayName" name="displayName">
         </div>
-
         <!-- กล่องแสดงวันที่และเวลา -->
-        <div class="bg-gray-100 border rounded-lg text-center my-4 py-8 px-4">
-            <div class="daytime">
-                <div id="date"></div>
-                <div class="text-5xl text-bold" id="time"></div>
+        <div class="flex bg-black border rounded-lg text-center my-4 py-6 px-4">
+          <div class="w-1/3 ">
+            <div class="p-2"> <img class="rounded-lg" src="https://lh5.googleusercontent.com/d/1UzRNBSST_ggeo3j_E4girMnShldtiNo4" alt="Mortar logo"> </div>
+           </div>
+            <div class="p-4">
+                <div class="text-white text-bold" id="date"></div>
+                <div class="text-5xl text-white text-bold" id="time"></div>
                 <!-- ฟิลด์ที่ซ่อนอยู่สำหรับรับค่า วันที่ และ เวลา -->
                 <input type="date" id="todayInput" name="todayInput" style="position: absolute; left: -9999px;"
                     readonly>
                 <input type="time" id="currentTime" name="currentTime" style="display: none;">
             </div>
         </div>
+   
 
         <!-- กล่องแสดงข้อมูลผู้ใช้ -->
         <div id="step1">
@@ -108,7 +111,7 @@
             <textarea class="input-field w-full border border-gray-300 rounded-lg p-4 text-gray-700 " placeholder="Note"
                 id="noteInput"></textarea>
             <!-- ปุ่มสำหรับไปยังขั้นตอนถัดไป -->
-            <div class="bg-gray-900 text-white text-center rounded-md my-4">
+            <div class="bg-gray-800 text-white text-center rounded-md my-4">
                 <button class="p-4 w-full" onclick="nextStep()"> ถัดไป</button>
             </div>
         </div>
@@ -136,17 +139,19 @@
             </div>
         </div>
 
-        <!-- ขั้นตอนที่สาม: ยืนยันที่อยู่ -->
-        <div id="step3" class="hidden text-center">
+         <!-- ขั้นตอนที่สาม: ยืนยันที่อยู่ -->
+         <div id="step3" class="hidden text-center">
             <div class="submit">
-                <div class="w-full  p-4 mb-4 rounded-md bg-blue-800 text-white">
+                <div class="w-full  p-4 mb-4 rounded-md bg-gray-800 text-white">
                     <button type="button" onclick="getLocation()"
                         class="w-full rounded-md blink">กดเพื่อยืนยันที่อยู่ของคุณ</button>
                 </div>
                 <div id="locationInfo" name="locationInfo"
                     class="bg-white p-4 rounded-lg shadow-sm max-w-sm mx-auto my-4">
+                    <div class="flex justify-between">
                     <p id="latitude" class="text-gray-700 font-medium pb-2">Latitude: </p>
                     <p id="longitude" class="text-gray-700 font-medium pb-2">Longitude: </p>
+                  </div>
                     <p id="fullAddress">สถานที่</p>
                 </div>
 
@@ -173,7 +178,7 @@
     const LIFF_ID = '2006041930-4qvKN0kz'; // Liff ID
 
     window.onload = async function () {
-        await initializeLiff();
+       await initializeLiff();
     };
 
     async function initializeLiff() {
